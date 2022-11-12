@@ -24,6 +24,9 @@ export default function Home(){
         <Social url={"#"}>
           <FaFacebook size={35} color='fff'/>
         </Social>
+        <Social url={"#"}>
+          <FaInstagram size={35} color='fff'/>
+        </Social>
         </footer>
       </main>
      

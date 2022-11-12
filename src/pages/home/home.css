@@ -42,3 +42,30 @@
     line-height: 150%;
     color:black
 }
+footer{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 4px;
+}
+
+/*responsividade*/
+@media screen and (max-width:550px){
+    .home-container h1{
+        font-size: 10px;
+        text-align: center;
+    }
+    .link-text{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:350px){
+    .home-container{
+        font-size: 14px;
+        text-align: center;
+    }
+    .link-text{
+        font-size: 14px;
+    }
+}
