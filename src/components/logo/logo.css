@@ -1,0 +1,12 @@
+.logo{
+    margin-top: 44px;
+    margin-bottom: 26px;
+    color:aliceblue;
+    font-size: 54px;
+}
+.logo-text{
+    background: linear-gradient( chocolate, yellow);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,26 @@
+/*centraliar*/
+.error{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color:aliceblue;
+}
+
+.error h1{
+margin-bottom: 6px;
+}
+.error .link{
+    background-color: antiquewhite;
+    padding: 4px 16px;
+    margin-top: 14px;
+    border-radius: 4px;
+    color: black;
+    transition:background-color 0.5s;
+}
+.error .link:hover{
+    background-color: aliceblue;
+    transform: scale(1.05);
+}
