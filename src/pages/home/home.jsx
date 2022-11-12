@@ -1,5 +1,7 @@
 import { Logo } from "../../components/logo";
+import { Social } from "../../components/social/social";
 import './home.css'
+import {FaFacebook, FaInstagram} from 'react-icons/fa'
 export default function Home(){
     return(
         <div className="home-container">
@@ -18,7 +20,13 @@ export default function Home(){
           <p className="link-text">Nosso canal </p>
         </a>
       </section>
+      <footer> 
+        <Social url={"#"}>
+          <FaFacebook size={35} color='fff'/>
+        </Social>
+        </footer>
       </main>
+     
         </div>
     )
 }
