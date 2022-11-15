@@ -1,0 +1,24 @@
+.admin-header{
+width: 100%;
+max-width: 720px;
+margin-top: 14px;
+padding: 0 14px;
+}
+.nav-header{
+width: 100%;
+display: flex;
+background-color: aliceblue;
+height: 48px;
+border-radius: 4px;
+align-items: center;
+}
+.nav-header button{
+    border: 0;
+    background-color: transparent;
+    margin-left: 24px;
+    margin-right: 8px; 
+}
+.nav-header a{
+    margin-right: 14px;
+    color: black;
+}

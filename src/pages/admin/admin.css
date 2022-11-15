@@ -1,0 +1,20 @@
+.admin-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.label{
+    color: beige;
+    font-weight: mediun;
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+.container-colors{
+    display: flex;
+    gap: 22px;
+    margin: 14px 0;
+}
+.right{
+    margin-right: 14px;
+}
