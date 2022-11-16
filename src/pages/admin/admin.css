@@ -18,3 +18,32 @@
 .right{
     margin-right: 14px;
 }
+.title{
+    color: aliceblue;
+    margin: 20px 0 14px 0;
+}
+.previws{
+    margin:  0 0 28px 0;
+    padding: 4px;
+    border: 1.5px solid #000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4px;
+}
+.links{
+   width: 90%;
+   max-width: 660px;
+   display: flex;
+    align-items: center;
+    flex-direction: row;
+   padding: 14px 8px;
+   justify-content: space-between;
+}
+.btn-delete{
+    border: 1.5px dashed oldlace;
+    color: aliceblue;
+    background-color: black;
+    padding: 4px;
+}
