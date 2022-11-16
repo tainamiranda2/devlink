@@ -5,21 +5,71 @@ import { Button } from "../../components/button/button";
 import './admin.css'
 
 import {FiTrash2} from 'react-icons/fi'
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {db} from '../../services/firebase'
+import { addDoc, collection, onSnapshot,query,orderBy,doc,deleteDoc, snapshotEqual} from "firebase/firestore";
 export default function Admin(){
     const [nameInput, setNameInput]=useState("")
     const [urlInput, seturlInput]=useState("")
     const [backgroundColorInput, setbackgroundColorInput]=useState("#fff")
     const [textColorInput, settextColorInput]=useState("#000")
     
-   //previwe
+    const [links,setLinks]=useState([])
+    useEffect(()=>{
+        //resgando os dados
+        const linksRef=collection(db, "links")
+        //ordernar
+        const queryRef=query(linksRef, orderBy("created","asc"))
+const unsub=onSnapshot(queryRef, (snopshot)=>{
+    let lista=[]
+    snopshot.forEach((doc)=>{
+        lista.push({
+            id:doc.id,
+            name: doc.data().name,
+            url:doc.data().url,
+            bg:doc.data().bg,
+            color:doc.data().color
+
+    })
+  //  console.log(lista)
+    
+    })
+    setLinks(lista)
+})
+
+    },[])
+async function handleRegister(e){
+
+e.preventDefault()
+if(nameInput==='' || urlInput===''){
+    alert("preencha todos os campos")
+    return
+}
+//gera ide aleatorio
+addDoc(collection(db, 'links'),{
+    name:nameInput,
+    url:urlInput,
+    bg:backgroundColorInput,
+    color:textColorInput,
+    created:new Date()
+})
+.then(()=>{
+setNameInput("")
+seturlInput("")
+}).catch((error)=>{
+    console.log('erro ao registra'+error)
+})
+
+}
+
+   
     return(
         <>
         <Header/>
         <div className="admin-container">
         <Logo/>
    
-        <form  className="form">
+        <form  className="form" onSubmit={handleRegister}>
             <label  className="label">Nome do link</label>
             <Input 
             type="text"
@@ -51,24 +101,34 @@ export default function Admin(){
                 />
                 </div>
             </section>
-            <div className="previws">
-            <label className="label">Veja como esta ficando</label>
-            <article className="list" style={{backgroundColor: backgroundColorInput}}>
-            <p style={{color: textColorInput}}> {nameInput}</p>
-            </article>
-            </div>
 
+            
+{nameInput!==''&&(
+    <div className="previws">
+    <label className="label">Veja como esta ficando</label>
+    <article className="list" style={{backgroundColor: backgroundColorInput}}>
+    <p style={{color: textColorInput}}> {nameInput}</p>
+    </article>
+    </div>
+)}
            <Button text="cadastrar"/>
         </form>
         <h2 className="title">Meus links</h2>
-        <article className="links">
-            <p>Grupo exclusiva do telegram</p>
-            <div>
-                <button  className="btn-delete">
-                    <FiTrash2 size={28} color="#fff"/>
-                </button>
-            </div>
-        </article>
+
+       {links.map((item, index)=>(
+         <article key={index} 
+         className="links"
+         style={{backgroundColor: item.bg, 
+            color:item.color}}
+         >
+         <p>{item.name}</p>
+         <div>
+             <button  className="btn-delete">
+                 <FiTrash2 size={28} color="#fff"/>
+             </button>
+         </div>
+     </article>
+       ))}
         </div>
         </>
     )
