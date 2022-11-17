@@ -11,6 +11,7 @@ export default function Login(){
     const [email, setEmail]=useState('')
     const [password, setPassword]=useState('')
 const navigate=useNavigate()
+
     function handleLogin(e){
         e.preventDefault()
         if(email ===''|| password===''){
@@ -20,7 +21,7 @@ const navigate=useNavigate()
         signInWithEmailAndPassword(auth, email, password)
         .then(()=>{
             //alert("Logado com sucesso")
-            navigate("/admin")
+            navigate("/admin", {replace:true})
         })
         .catch(()=>{
             alert("Erro ao fazer login")
@@ -34,7 +35,7 @@ return(
     
    <form className="form" onSubmit={handleLogin}> 
     <Input 
-    type="esmail"
+    type="email"
     placeholder="Digite seu email"
     value={email}
     onChange={(e)=>setEmail(e.target.value)}
@@ -45,10 +46,11 @@ return(
     placeholder="Digite sua senha"
     value={password}
     onChange={(e)=>setPassword(e.target.value)}
-    autoComplete="on"
+  // autoComplete="on"
     />
    
-   <Button text="Enviar"/>
+   <Button type="submit"
+    text="Enviar"/>
    </form>
     </div>
 )

@@ -62,6 +62,10 @@ seturlInput("")
 
 }
 
+async function handleDeleteLink(id){
+    const docREf=doc(db, "links", id)
+    await deleteDoc(docREf)
+}
    
     return(
         <>
@@ -123,7 +127,8 @@ seturlInput("")
          >
          <p>{item.name}</p>
          <div>
-             <button  className="btn-delete">
+             <button  className="btn-delete" 
+             onClick={()=>handleDeleteLink(item.id)}>
                  <FiTrash2 size={28} color="#fff"/>
              </button>
          </div>
